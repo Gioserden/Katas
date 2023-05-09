@@ -14,4 +14,6 @@ plugins {
 }
 
 rootProject.name = 'Katas'
+rootProject.projectDir = new File('D:\\Repo\\Katas')
+
 include('app')
