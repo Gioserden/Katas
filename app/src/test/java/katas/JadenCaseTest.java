@@ -23,4 +23,40 @@ public class JadenCaseTest {
   public void testEmptyArg() {
     assertNull("Must return null when the arg is empty string", jadenCase.toJadenCase(""));
   }
+
+  @Test
+  public void testToJadenCaseWithValidString() {
+    assertEquals("Hello World", jadenCase.toJadenCase("hello world"));
+  }
+
+  @Test
+  public void testToJadenCaseWithWhitespaceString() {
+    assertNull(jadenCase.toJadenCase("   "));
+  }
+
+  @Test
+  public void testToJadenCaseWithSingleLowercaseCharacter() {
+    assertEquals("A", jadenCase.toJadenCase("a"));
+  }
+
+  @Test
+  public void testToJadenCaseWithSingleUppercaseCharacter() {
+    assertEquals("Z", jadenCase.toJadenCase("Z"));
+  }
+
+  @Test
+  public void testToJadenCaseWithAllUppercaseString() {
+    assertEquals("HELLO WORLD", jadenCase.toJadenCase("HELLO WORLD"));
+  }
+
+  @Test
+  public void testToJadenCaseWithAllLowercaseString() {
+    assertEquals("Hello World", jadenCase.toJadenCase("hello world"));
+  }
+
+  @Test
+  public void testToJadenCaseWithMixedCaseString() {
+
+    assertEquals("HeLlO WoRlD", jadenCase.toJadenCase("HeLlO WoRlD"));
+  }
 }

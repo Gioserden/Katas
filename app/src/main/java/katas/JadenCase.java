@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class JadenCase {
   public String toJadenCase(String phrase) {
-    if(Objects.isNull(phrase) || phrase.isEmpty()) {
+    if(Objects.isNull(phrase) || phrase.trim().isEmpty()) {
       return null;
     }
 
