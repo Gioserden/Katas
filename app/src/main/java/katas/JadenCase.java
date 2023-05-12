@@ -18,11 +18,12 @@
 package katas;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class JadenCase {
   public String toJadenCase(String phrase) {
-    if(phrase == null || phrase == "") {
+    if(Objects.isNull(phrase) || phrase.isEmpty()) {
       return null;
     }
 
