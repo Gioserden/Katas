@@ -9,6 +9,10 @@ import java.util.List;
 
 public class PromedioUtil {
 
+  private PromedioUtil() {
+
+  }
+
   public static double calcularPromedio(List<Integer> numeros) {
 
     return numeros.stream()
