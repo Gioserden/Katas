@@ -23,4 +23,12 @@ public class PersonaFilters {
         .collect(Collectors.toList());
     return res;
   }
+
+  public List<Persona> ageFilterSame(List<Persona> lista, int age) {
+    List<Persona> res;
+    res = lista.stream()
+        .filter(p -> p.getAge() == age)
+        .collect(Collectors.toList());
+    return res;
+  }
 }

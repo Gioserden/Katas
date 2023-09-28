@@ -28,4 +28,23 @@ public class Persona {
   public int getAge() {
     return age;
   }
+
+  @Override
+  public boolean equals (Object obj) {
+    // Si el objeto es nulo, devuelve falso
+    if (obj == null) {
+      return false;
+    }
+    // Si el objeto es de una clase diferente, devuelve falso
+    if (obj.getClass () != this.getClass ()) {
+      return false;
+    }
+    // Si el objeto es el mismo, devuelve verdadero
+    if (this == obj) {
+      return true;
+    }
+    // Si el objeto es una instancia de Persona, compara sus atributos
+    Persona otra = (Persona) obj;
+    return this.name.equals (otra.name) && this.age == otra.age;
+  }
 }
