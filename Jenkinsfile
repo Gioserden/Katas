@@ -1,12 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            // Utiliza la imagen oficial de Jenkins con Docker
-            image 'jenkins/jenkins:lts'
-            // Monta el directorio del proyecto en el contenedor de Jenkins
-            args '-v /var/jenkins_home/workspace/pltest2:/workspace'
-        }
-    }
+    agent any
 
     environment {
         // Configura el entorno para utilizar Gradle 8.1.1
@@ -18,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clonar el repositorio de GitHub en la ubicación de trabajo de Jenkins
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Gioserden/Katas.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Gioserden/Katas.git']]])
             }
         }
 
@@ -44,6 +37,27 @@ pipeline {
     }
 
     post {
-        // Acciones posteriores al pipeline
+        always {
+            // Acciones que se ejecutan siempre, como archivar artefactos
+            archiveArtifacts artifacts: '**/build/libs/*.jar', allowEmptyArchive: true
+        }
+        success {
+            // Acciones a realizar si el pipeline se ejecuta con éxito
+            emailext(
+                subject: "Pipeline Exitoso",
+                body: "El pipeline de construcción y pruebas se ejecutó con éxito.",
+                to: 'jenkin.katas@gmail.com', // Reemplaza con la dirección de correo deseada
+                mimeType: 'text/plain'
+            )
+        }
+        failure {
+            // Acciones a realizar si el pipeline falla
+            emailext(
+                subject: "Pipeline Fallido",
+                body: "El pipeline de construcción y pruebas falló. Por favor, revisa los registros.",
+                to: 'jenkin.katas@gmail.com', // Reemplaza con la dirección de correo deseada
+                mimeType: 'text/plain'
+            )
+        }
     }
 }
