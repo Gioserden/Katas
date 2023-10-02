@@ -17,9 +17,9 @@ pipeline {
 
         stage('Install Gradle') {
             steps {
-                // Descargar e instalar Gradle 8.1.1
+                // Descargar e instalar Gradle 8.1.1 utilizando curl
                 sh 'curl -LO https://services.gradle.org/distributions/gradle-8.1.1-bin.zip'
-                sh 'unzip gradle-8.1.1-bin.zip -d /usr/local'
+                sh 'unzip gradle-8.1.1-bin.zip -d ~/'
                 sh 'rm gradle-8.1.1-bin.zip'
             }
         }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 // Ejecutar Gradle dentro del proyecto clonado
                 dir('/workspace') {
-                    sh '/usr/local/gradle/bin/gradle clean build'
+                    sh '~/gradle-8.1.1/bin/gradle clean build'
                 }
             }
         }
