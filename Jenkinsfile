@@ -26,11 +26,11 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Ejecutar Gradle dentro del proyecto clonado
-                dir('/workspace') {
+                // Cambiar al directorio de tu proyecto clonado
+                dir('/var/jenkins_home/workspace/pltest2') {
+                    // Ejecutar Gradle dentro del proyecto clonado
                     sh '~/gradle-8.1.1/bin/gradle clean build'
                 }
-            }
         }
 
         // Otras etapas según tus necesidades
