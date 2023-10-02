@@ -12,7 +12,7 @@ Solving katas just for practicing.
 
 # Para cada kata
 * Crear un nuevo branch desde el master actualizado con git checkout -b nombreDeLaKata 
-* Hacer el commit y posterior push.
+* Hacer el commit y posterior push. (git commit -m "Mensaje del commit")
 
 # Pluggins
 
