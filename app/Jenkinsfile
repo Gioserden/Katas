@@ -18,7 +18,7 @@ pipeline {
         stage('Install Gradle') {
             steps {
                 // Descargar e instalar Gradle 8.1.1
-                sh 'wget https://services.gradle.org/distributions/gradle-8.1.1-bin.zip'
+                sh 'curl -LO https://services.gradle.org/distributions/gradle-8.1.1-bin.zip'
                 sh 'unzip gradle-8.1.1-bin.zip -d /usr/local'
                 sh 'rm gradle-8.1.1-bin.zip'
             }
