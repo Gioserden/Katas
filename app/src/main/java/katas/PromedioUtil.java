@@ -2,7 +2,6 @@
  * Promedio de una lista de numero enteros
  */
 
-
 package katas;
 
 import java.util.List;
