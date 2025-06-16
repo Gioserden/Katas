@@ -2,18 +2,8 @@ package katas;
 
 public class FlippingNumbers {
   public static long solution(long number) {
-    String binaryString = String.format("%32s", Long.toBinaryString(number)).replace(' ', '0');
-
-    StringBuilder flippedBinaryString = new StringBuilder();
-    for (char bit : binaryString.toCharArray()) {
-      if (bit == '0') {
-        flippedBinaryString.append('1');
-      } else {
-        flippedBinaryString.append('0');
-      }
-    }
-
-    return Long.parseUnsignedLong(flippedBinaryString.toString(), 2);
+    // XOR with 32 bits of 1s (0xFFFFFFFFL) will flip the lower 32 bits.
+    // The result is treated as an unsigned 32-bit integer, returned as a long.
+    return number ^ 0xFFFFFFFFL;
   }
-
 }
